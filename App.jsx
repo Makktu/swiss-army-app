@@ -16,7 +16,7 @@ export default function App() {
     <>
       <StatusBar style='light' />
       <NavigationContainer>
-        <Drawer.Navigator>
+        <Drawer.Navigator screenOptions={styles.universalScreenStyle}>
           <Drawer.Screen name='HOME' component={HomeScreen} />
           <Drawer.Screen name='STOPWATCH' component={StopwatchScreen} />
         </Drawer.Navigator>
@@ -28,8 +28,31 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1e1c1c',
+    // backgroundColor: '#1e1c1c',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  universalScreenStyle: {
+    sceneContainerStyle: {
+      backgroundColor: '#292a34',
+    },
+    contentStyle: {
+      backgroundColor: '#292d34',
+    },
+
+    headerStyle: {
+      backgroundColor: '#292d34',
+    },
+    headerTitleStyle: {
+      fontWeight: 'bold',
+      color: 'white',
+      fontSize: 22,
+    },
+    drawerContentStyle: {
+      backgroundColor: '#292d34',
+    },
+    drawerInactiveTintColor: '#e1d3ce',
+    drawerActiveTintColor: '#88e588',
+    drawerActiveBackgroundColor: '#000005',
   },
 });
