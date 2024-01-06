@@ -11,7 +11,8 @@ export default function StopwatchScreen() {
   const startTimeRef = useRef(0);
 
   useEffect(() => {
-    getFormattedTime(stopWatchTime);
+    console.log(stopWatchTime);
+    setFormattedTime(getFormattedTime(stopWatchTime));
   }, [stopWatchTime]);
 
   // Function to start the stopwatch
@@ -45,23 +46,6 @@ export default function StopwatchScreen() {
       setStopWatchTime(Math.floor((Date.now() - startTimeRef.current) / 1000));
     }, 1000);
     setIsRunning(true);
-  };
-
-  const makeFormattedTime = () => {
-    let hours, minutes, seconds;
-    if (stopWatchTime < 60) {
-      if (stopWatchTime < 10) {
-        return `00:00:0${stopWatchTime}`;
-      } else return `00:00:${stopWatchTime}`;
-    }
-
-    if (stopWatchTime < 3600) {
-      return `00:00:${stopWatchTime}`;
-    }
-
-    if (stopWatchTime < 60) return `00:00:${stopWatchTime}`;
-
-    return `00:00:${stopWatchTime}`;
   };
 
   return (
@@ -120,6 +104,15 @@ const styles = StyleSheet.create({
   },
   button: {
     margin: 8,
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    fontSize: 22,
+    color: 'white',
   },
   stopwatch: {
     color: 'white',
@@ -127,17 +120,17 @@ const styles = StyleSheet.create({
     marginBottom: '20%',
   },
   resetButton: {
-    backgroundColor: '#bfbf50',
+    backgroundColor: '#5a5a25',
     padding: 5,
     fontSize: 30,
   },
   resumeButton: {
-    backgroundColor: '#58c458',
+    backgroundColor: '#275727',
     padding: 5,
     fontSize: 30,
   },
   pauseButton: {
-    backgroundColor: '#c04848',
+    backgroundColor: '#632525',
     padding: 5,
     fontSize: 30,
   },
