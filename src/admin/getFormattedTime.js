@@ -1,16 +1,13 @@
 export default function getFormattedTime(secondsElapsed) {
   // convert secondsElapsed into a string with format 'hh:mm:ss'
-  console.log('func', secondsElapsed);
 
-  // * get hours/minutes/seconds from secondsElapsed
+  // get hours/minutes/seconds from secondsElapsed
   let hours = 0;
   let minutes = 0;
   let seconds = 0;
   let returnedSeconds = ``;
-  let returnedMinutes = ``;
+  let returnedMinutes = `00`;
   let returnedHours = ``;
-
-  let secondsZero = true;
 
   const totalMinutes = Math.floor(secondsElapsed / 60);
   seconds = secondsElapsed % 60;
@@ -30,12 +27,10 @@ export default function getFormattedTime(secondsElapsed) {
   }
 
   if (hours > 9) {
-    returnedHours = `${returnedHours}`;
+    returnedHours = `${hours}`;
   } else {
-    returnedHours = `0${returnedHours}`;
+    returnedHours = `0${hours}`;
   }
-
-  console.log(hours > 9);
 
   return `${returnedHours}:${returnedMinutes}:${returnedSeconds}`;
 }
