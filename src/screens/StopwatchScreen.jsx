@@ -1,4 +1,10 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  useWindowDimensions,
+} from 'react-native';
 import { useState, useRef, useEffect } from 'react';
 import CheckScreenDimensions from '../components/CheckScreenDimensions';
 import getFormattedTime from '../admin/getFormattedTime';
@@ -9,6 +15,8 @@ export default function StopwatchScreen() {
   const [formattedTime, setFormattedTime] = useState('');
   const intervalRef = useRef(null);
   const startTimeRef = useRef(0);
+
+  const { height, width } = useWindowDimensions();
 
   const secondsDuration = 2;
 
@@ -57,8 +65,13 @@ export default function StopwatchScreen() {
   return (
     <>
       <View style={styles.container}>
-        <View style={styles.stopwatchContainer}>
-          <Text style={styles.stopwatch}>
+        <View style={[styles.stopwatchContainer, { minWidth: width }]}>
+          <Text
+            style={[
+              styles.stopwatch,
+              { minWidth: width - 30, position: 'absolute' },
+            ]}
+          >
             {formattedTime ? formattedTime : '00:00:00'}
           </Text>
         </View>
@@ -126,18 +139,19 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   stopwatchContainer: {
-    width: '100%',
-    height: 100,
-    // backgroundColor: '#8e2d3d',
+    flexShrink: 1,
+    minHeight: 100,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 50,
   },
   stopwatch: {
+    flexGrow: 0,
     color: 'white',
-    fontSize: 80,
-    marginLeft: '10%',
-    // width: '100%',
+    fontSize: 70,
+    minHeight: 100,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
   },
   resetButton: {
     backgroundColor: '#5a5a25',

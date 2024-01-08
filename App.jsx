@@ -7,6 +7,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import HomeScreen from './src/screens/HomeScreen';
 import StopwatchScreen from './src/screens/StopwatchScreen';
+import PressureSwitchScreen from './src/screens/PressureSwitchScreen';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -19,6 +20,10 @@ export default function App() {
         <Drawer.Navigator screenOptions={styles.universalScreenStyle}>
           <Drawer.Screen name='HOME' component={HomeScreen} />
           <Drawer.Screen name='STOPWATCH' component={StopwatchScreen} />
+          <Drawer.Screen
+            name='PRESSURE SWITCH'
+            component={PressureSwitchScreen}
+          />
         </Drawer.Navigator>
       </NavigationContainer>
     </>
