@@ -2,11 +2,19 @@ import { StyleSheet, Text, View, Pressable } from 'react-native';
 import React from 'react';
 import { GlobalStyles } from '../admin/globalStyles';
 
-export default function MyButton({ whenPressed, style, children }) {
+export default function MyButton({
+  whenPressed,
+  whenLongPressed,
+  whenSwitchReleased,
+  style,
+  children,
+}) {
   return (
     <View style={[{ borderRadius: 10 }, style]}>
       <Pressable
         onPress={whenPressed}
+        onLongPress={whenLongPressed}
+        onPressOut={whenSwitchReleased}
         style={({ pressed }) => pressed && styles.pressed}
       >
         <Text style={style}>{children}</Text>
