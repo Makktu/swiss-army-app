@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-export default function IconButton({
+export default function MyButton({
   icon,
   size,
   color = 'white',

@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import { Audio } from 'expo-av';
 import MyButton from '../components/MyButton';
-import CheckScreenDimensions from '../components/CheckScreenDimensions';
+import PressureAlarmSettingsScreen from './PressureAlarmSettingsScreen';
 
 export default function PressureAlarmScreen() {
   const [switchPressed, setSwitchPressed] = useState(false);
@@ -53,13 +53,18 @@ export default function PressureAlarmScreen() {
   }, [sound]);
   return (
     <View style={switchPressed ? styles.stealthContainer : styles.container}>
+      <View style={styles.settingsArea}>
+        <PressureAlarmSettingsScreen />
+      </View>
       <View style={styles.messageArea}>
         {switchPressed ? (
           <Text style={styles.armedText}>ARMED !</Text>
         ) : (
           <>
-            <Text style={styles.unArmedText}>Press AND HOLD</Text>
-            <Text style={styles.unArmedText}>this button to ARM</Text>
+            <Text style={[styles.unArmedText, { color: 'red' }]}>
+              Press AND HOLD
+            </Text>
+            <Text style={styles.unArmedText}>to ARM !</Text>
           </>
         )}
       </View>
@@ -74,7 +79,6 @@ export default function PressureAlarmScreen() {
           switchPressed ? styles.stealthPressureSwitch : styles.pressureSwitch
         }
       />
-      {/* <CheckScreenDimensions /> */}
     </View>
   );
 }
@@ -102,10 +106,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'black',
+    opacity: 0.1,
   },
   armedText: {
     fontSize: 40,
     color: 'orangered',
+    opacity: 0.5,
   },
   unArmedText: {
     fontSize: 30,
@@ -115,5 +121,11 @@ const styles = StyleSheet.create({
     marginBottom: 50,
     textAlign: 'center',
     alignItems: 'center',
+  },
+  settingsArea: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    opacity: 0.3,
   },
 });
