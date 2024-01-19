@@ -7,9 +7,18 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import HomeScreen from './src/screens/HomeScreen';
 import StopwatchScreen from './src/screens/StopwatchScreen';
 import PressureAlarmScreen from './src/screens/PressureAlarmScreen';
+import PressureAlarmSettingsScreen from './src/screens/PressureAlarmSettingsScreen';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
+
+function Settings() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name='SETTINGS' component={PressureAlarmSettingsScreen} />
+    </Stack.Navigator>
+  );
+}
 
 export default function App() {
   return (
@@ -22,6 +31,11 @@ export default function App() {
           <Drawer.Screen
             name='PRESSURE ALARM'
             component={PressureAlarmScreen}
+          />
+          <Drawer.Screen
+            name='Settings'
+            component={Settings}
+            options={{ presentation: 'modal' }}
           />
         </Drawer.Navigator>
       </NavigationContainer>
