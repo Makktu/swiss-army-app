@@ -46,7 +46,6 @@ export default function PressureAlarmScreen() {
   useEffect(() => {
     return sound
       ? () => {
-          console.log('Unloading Sound');
           sound.unloadAsync();
         }
       : undefined;
